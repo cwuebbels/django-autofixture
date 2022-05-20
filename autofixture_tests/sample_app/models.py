@@ -16,8 +16,8 @@ class Category(models.Model):
 class Post(models.Model):
     name = models.CharField(max_length=50)
     text = models.TextField()
-    author = models.ForeignKey(Author)
-    categories = models.ManyToManyField(Category, null=True, blank=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category, blank=True)
 
     def __unicode__(self):
         return '%s: %s' % (self.name, self.text)
